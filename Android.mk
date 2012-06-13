@@ -9,7 +9,7 @@ BIONIC_ICS := true
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := android/regex/regex.c
 LOCAL_C_INCLUDES := $(BB_PATH)/android/regex
-LOCAL_CFLAGS := -Wno-sign-compare
+LOCAL_CFLAGS := -Wno-sign-compare -fno-strict-aliasing
 LOCAL_MODULE := libclearsilverregex
 include $(BUILD_STATIC_LIBRARY)
 
@@ -17,6 +17,7 @@ include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(shell cat $(BB_PATH)/android/librpc.sources)
 LOCAL_C_INCLUDES := $(BB_PATH)/android/librpc
+LOCAL_CFLAGS := -fno-strict-aliasing
 LOCAL_MODULE := libuclibcrpc
 include $(BUILD_STATIC_LIBRARY)
 
@@ -96,6 +97,7 @@ BUSYBOX_C_INCLUDES = \
 	$(BB_PATH)/android/librpc
 
 BUSYBOX_CFLAGS = \
+	-fno-strict-aliasing \
 	-Werror=implicit \
 	-DNDEBUG \
 	-DANDROID \
